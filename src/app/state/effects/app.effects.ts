@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { tap, switchMap, catchError } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { SearchActions } from '../actions';
+import { of, map, switchMap, catchError } from 'rxjs';
 import { TMDBService } from '../services';
-import { of, map } from 'rxjs';
 
 /**
  * It's a relatively small app. So, no need for multiple effects files
@@ -13,14 +13,14 @@ import { of, map } from 'rxjs';
 export class AppEffects {
   constructor(
     private actions$: Actions,
-    private _service: TMDBService
+    private service: TMDBService
   ) {}
 
   search$ = createEffect(() =>
     this.actions$.pipe(
       ofType(SearchActions.search),
       switchMap(({ query }) =>
-        this._service.search(query, 'film').pipe(
+        this.service.search(query, 'film').pipe(
           map((res: any) => SearchActions.searchSuccess({ results: res })),
           catchError(() => of(SearchActions.searchFailure()))
         )

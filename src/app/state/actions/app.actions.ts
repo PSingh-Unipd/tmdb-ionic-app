@@ -8,7 +8,7 @@ export const SearchActions = createActionGroup({
   source: `Search`,
   events: {
     search: props<{ query: string }>(),
-    searchSuccess: props<{ results: any[] }>(),
+    searchSuccess: props<{ results: any }>(),
     searchFailure: emptyProps(),
   },
 });
