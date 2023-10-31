@@ -1,10 +1,10 @@
 import { createActionGroup, props, emptyProps } from '@ngrx/store';
 
 /**
- * It's relativly small an app. So, no need to split actions into multiple files
+ * It's a relatively small app. So, no need to split actions into multiple files
  */
 
-export const ExplorSearchActions = createActionGroup({
+export const SearchActions = createActionGroup({
   source: `Search`,
   events: {
     search: props<{ query: string }>(),
@@ -39,5 +39,3 @@ export const CastDetailsActions = createActionGroup({
     loadFailure: emptyProps(),
   },
 });
-
-
