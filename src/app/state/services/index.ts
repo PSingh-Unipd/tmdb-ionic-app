@@ -1,1 +1,1 @@
-export * from './tmdb.service';
+export * from './api.service';
